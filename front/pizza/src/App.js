@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <Route path="/" render={props => <Nav {...props} />}/>
-      <Route path="login" component={Login}/>
+      <Route path="/login" component={Login}/>
     </div>
   );
 }

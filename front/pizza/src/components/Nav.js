@@ -1,5 +1,4 @@
 import React from "react"
-import {Link} from "react-router-dom"
 import Button from "./Button"
 import styled from "styled-components"
 
@@ -9,10 +8,10 @@ const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #1C1C16;
-  background-color: #72d3fe;
   cursor: default;
-`
+  background-image: linear-gradient(to bottom right, rgba(179, 200, 213, 1), rgba(179, 200, 213, .3));
+  box-shadow: 0px 1px 1px rgba(34,34,34,.1);
+  `
 
 const Logo = styled.div`
   margin-left: 80px;
@@ -35,7 +34,7 @@ const Nav = () => {
   
   return (
     <Header>
-      <Logo>PizZachary</Logo>
+      <Logo></Logo>
       <Auths>
         <Button content="LOGIN" />
         <Button content="REGISTER" />
