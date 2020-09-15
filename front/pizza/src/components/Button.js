@@ -15,7 +15,7 @@ const MyButton = styled(Link)`
   cursor: pointer;
   text-decoration: none;
   border-radius: 3px;
-  transition: background-color .5s;
+  transition: background-color .2s;
   box-shadow: 0px 0px 3px rgba(34,34,34,.8);
 
   &:hover {

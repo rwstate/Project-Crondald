@@ -37,13 +37,21 @@ const Creds = styled.div`
 `
 
 const Field = styled.input`
+  box-sizing: border-box;
   border: none;
   height: 40px;
   width: 100%;
   font-size: 16px;
   padding-left: 5px;
-  box-shadow: 1px 1px 6px #BEBEBE;
+  box-shadow: 1px 1px 6px #a5a5a5;
   border-radius: 3px;
+  transition: box-shadow .3s;
+  
+  &:focus {
+    transition: box-shadow .3s;
+    outline: none;
+    box-shadow: 1px 1px 0px #a5a5a5, inset 1px 1px 4px #a5a5a5;
+  }
 `
 
 const Submit = styled(Button)`
@@ -52,11 +60,16 @@ const Submit = styled(Button)`
 `
 
 const Questions = styled.div`
-  
+  display: flex;
+  margin-left: 5%;
+  margin-top: 8px;
+  width: 150px;
+  justify-content: space-between;
 `
 
 const Question = styled(Link)`
-  font-size: 10px;
+  font-size: 12px;
+  text-decoration: none;
 `
 
 const Login = props => {
@@ -70,6 +83,10 @@ const Login = props => {
         <Submit content="SUBMIT"></Submit>
       </Creds>
 
+      <Questions>
+        <Question>password?</Question>
+        <Question to="/register">new user?</Question>
+      </Questions>
     </LoginForm>
   )
 }
