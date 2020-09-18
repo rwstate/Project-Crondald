@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 import Button from "./Button"
@@ -73,14 +73,30 @@ const Question = styled(Link)`
 `
 
 const Login = props => {
+  const [creds, setCreds] = useState({
+    email: '',
+    pass: '',
+  })
+  const {email, pass} = creds
+
+  const handleInput = (e, fieldID) => {
+    const input = e.target.value
+    
+    fieldID === 'email'
+    ?
+    setCreds({...creds, email: input})
+    :
+    setCreds({...creds, pass: input}) 
+  }
+
   return (
     <LoginForm>
       <Title>~LOGIN~</Title>
 
       <Creds>
-        <Field placeholder="email"/>
-        <Field placeholder="password"/>
-        <Submit content="SUBMIT"></Submit>
+        <Field placeholder="email" value={email} onChange={e => handleInput(e, 'email')}/>
+        <Field placeholder="password" value={pass} onChange={e => handleInput(e, 'pass')}/>
+        <Submit content="SUBMIT" />
       </Creds>
 
       <Questions>
