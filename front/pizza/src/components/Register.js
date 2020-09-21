@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from "react"
-import { Link } from "react-router-dom"
-import styled from "styled-components"
-import Button from "./Button"
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import Button from "./Button";
 
 const RegisterForm = styled.div`
   box-sizing: border-box;
@@ -14,7 +14,7 @@ const RegisterForm = styled.div`
   border-radius: 4px;
   margin-top: 40px;
   flex-direction: column;
-`
+`;
 
 const Title = styled.div`
   letter-spacing: 8px;
@@ -24,7 +24,7 @@ const Title = styled.div`
   margin-left: 10%;
   margin-top: 2%;
   text-shadow: 0px 0px 3px;
-`
+`;
 
 const Creds = styled.div`
   display: flex;
@@ -34,7 +34,7 @@ const Creds = styled.div`
   height: 40%;
   width: 35%;
   justify-content: space-around;
-`
+`;
 
 const Field = styled.input`
   box-sizing: border-box;
@@ -45,19 +45,19 @@ const Field = styled.input`
   padding-left: 5px;
   box-shadow: 1px 1px 6px #a5a5a5;
   border-radius: 3px;
-  transition: box-shadow .3s;
-  
+  transition: box-shadow 0.3s;
+
   &:focus {
-    transition: box-shadow .3s;
+    transition: box-shadow 0.3s;
     outline: none;
     box-shadow: 1px 1px 0px #a5a5a5, inset 1px 1px 4px #a5a5a5;
   }
-`
+`;
 
 const Submit = styled(Button)`
   margin-top: 3%;
   margin-left: 28%;
-`
+`;
 
 const Questions = styled.div`
   display: flex;
@@ -65,82 +65,88 @@ const Questions = styled.div`
   margin-top: 8px;
   width: 200px;
   justify-content: space-between;
-`
+`;
 
 const Question = styled(Link)`
   font-size: 12px;
   text-decoration: none;
-`
+`;
 
-const Register = props => {
+const Register = (props) => {
   const [creds, setCreds] = useState({
-    email: '',
-    pass1: '',
-    pass2: '',
-  })
+    email: "",
+    pass1: "",
+    pass2: "",
+  });
 
   const [errors, setErrors] = useState({
     email: false,
     pass: false,
     passMatch: false,
-  })
+  });
 
-  const [creating, setCreating] = useState(false)
-  const 
+  const [creating, setCreating] = useState(false);
 
-  useEffect(() => {
+  useEffect(() => {});
 
-  })
+  const { email, pass1, pass2 } = creds;
 
-  const {email, pass1, pass2} = creds
-
-  const checkEmail = newEmail => {
-    const re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+  const checkEmail = (newEmail) => {
+    const re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
     if (!re.test(newEmail)) {
-      setErrors({...errors, email: true})
+      setErrors({ ...errors, email: true });
     } else {
-      setErrors({...errors, email: false})
+      setErrors({ ...errors, email: false });
     }
-  }
+  };
 
-  const checkPass = newPass => {
-    const re = /(?=.*[A-Z])(?=.*[0-9])/
+  const checkPass = (newPass) => {
+    const re = /(?=.*[A-Z])(?=.*[0-9])/;
     if (newPass.length < 8 || !re.test(newPass)) {
-      setErrors({...errors, pass: true})
+      setErrors({ ...errors, pass: true });
     } else {
-      setErrors({...errors, pass: false})
+      setErrors({ ...errors, pass: false });
     }
-  }
+  };
 
   const checkPassMatch = (newPass1, newPass2) => {
     if (newPass1 !== newPass2) {
-      setErrors({...errors, passMatch: true})
+      setErrors({ ...errors, passMatch: true });
     } else {
-      setErrors({...errors, passMatch: false})
+      setErrors({ ...errors, passMatch: false });
     }
-  }
+  };
 
   const handleInput = (e, fieldID) => {
-    const input = e.target.value
-    
-    fieldID === 'email'
-    ?
-    setCreds({...creds, email: input})
-    : fieldID === 'pass1'
-    ?
-    setCreds({...creds, pass1: input}) 
-    :
-    setCreds({...creds, pass2: input})
-  }
+    const input = e.target.value;
+
+    fieldID === "email"
+      ? setCreds({ ...creds, email: input })
+      : fieldID === "pass1"
+      ? setCreds({ ...creds, pass1: input })
+      : setCreds({ ...creds, pass2: input });
+  };
 
   return (
     <RegisterForm>
       <Title>~Register~</Title>
 
       <Creds>
-        <Field placeholder="email" value={email} onChange={e => handleInput(e, 'email')}/>
-        <Field placeholder="password" value={pass1} onChange={e => handleInput(e, 'pass1')}/>
-        <Field placeholder="confirm password" value={pass2} onChange={e => handleInput(e, 'pass2')}/>
+        <Field
+          placeholder="email"
+          value={email}
+          onChange={(e) => handleInput(e, "email")}
+        />
+        <Field
+          placeholder="password"
+          value={pass1}
+          onChange={(e) => handleInput(e, "pass1")}
+        />
+        <Field
+          placeholder="confirm password"
+          value={pass2}
+          onChange={(e) => handleInput(e, "pass2")}
+        />
         <Submit content="SUBMIT"></Submit>
       </Creds>
 
@@ -149,7 +155,7 @@ const Register = props => {
         <Question to="/login">already registered?</Question>
       </Questions>
     </RegisterForm>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;
